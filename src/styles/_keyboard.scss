@@ -1,0 +1,37 @@
+.keyboard {
+  width: 100%;
+  padding: 8px;
+  border: 3px solid darkslategray;
+  background-color: gainsboro;
+  border-radius: 10px;
+}
+
+.keyboard__shield {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keyboard__row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  flex: 0 1 40px;
+  aspect-ratio: 1/1;
+  font-weight: bold;
+  border-radius: 3px;
+  transition: all 0.3s linear;
+  background-color: darkgray;
+  color: black;
+  &_fn {
+    flex-basis: 80px;
+    aspect-ratio: 2/1;
+    background-color: darkslategray;
+    color: gainsboro;
+  }
+  &_active {
+    box-shadow: 0 0 2px grey;
+  }
+}

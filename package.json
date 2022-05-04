@@ -4,9 +4,6 @@
   "description": "webpack for keyboard",
   "private": true,
   "author": "evelin-mart",
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.2.4",
