@@ -25,6 +25,7 @@
   transition: all 0.3s linear;
   background-color: darkgray;
   color: black;
+  cursor: pointer;
   &_fn {
     flex-basis: 80px;
     aspect-ratio: 2/1;
@@ -32,6 +33,6 @@
     color: gainsboro;
   }
   &_active {
-    box-shadow: 0 0 2px grey;
+    box-shadow: 0 0 2px white;
   }
 }

@@ -9,27 +9,18 @@ const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
 const cssLoaders = (extra) => {
-  const loaders = [
-    {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        hmr: isDev,
-        reloadAll: true,
-      },
-    },
-    "css-loader",
-  ];
+  const loaders = [MiniCssExtractPlugin.loader, "css-loader"];
   if (extra) {
     loaders.push(extra);
-    loaders.push({
-      loader: "sass-resources-loader",
-      options: {
-        resources: [
-          // "src/vars.scss", //abstracts
-          // "src/mix.scss"
-        ],
-      },
-    });
+    // loaders.push({
+    //   loader: "sass-resources-loader",
+    //   options: {
+    //     resources: [
+    //       // "src/vars.scss", //abstracts
+    //       // "src/mix.scss"
+    //     ],
+    //   },
+    // });
   }
   return loaders;
 };
