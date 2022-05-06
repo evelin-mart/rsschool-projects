@@ -12,15 +12,6 @@ const cssLoaders = (extra) => {
   const loaders = [MiniCssExtractPlugin.loader, "css-loader"];
   if (extra) {
     loaders.push(extra);
-    // loaders.push({
-    //   loader: "sass-resources-loader",
-    //   options: {
-    //     resources: [
-    //       // "src/vars.scss", //abstracts
-    //       // "src/mix.scss"
-    //     ],
-    //   },
-    // });
   }
   return loaders;
 };
@@ -35,20 +26,20 @@ const esLint = () => {
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
-  mode: "development",
+  mode: process.env.NODE_ENV,
   devtool: isDev ? "inline-source-map" : false,
   entry: {
-    app: "./index.js",
+    app: path.resolve(__dirname, "./src/index.js"),
   },
   output: {
+    path: path.resolve(__dirname, "./dist"),
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
   },
   resolve: {
     extensions: [".js", ".json"], //add default extensions to imports
-    // alias: {
-    //   "@models": path.resolve(__dirname, "src/models")  //add default path
-    // }
+    alias: {
+      "~": path.resolve(__dirname, "src/scripts"), //add default path
+    },
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -60,12 +51,14 @@ module.exports = {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, ""),  //copy files
-    //     to: path.resolve(__dirname, "dist")
-    //   },
-    // ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/assets/favicon"), //copy files
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),

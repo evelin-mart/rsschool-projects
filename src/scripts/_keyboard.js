@@ -79,3 +79,33 @@ const rowsOrder = [
 import createHtmlNode from "./_create";
 import i18n from "./_langs";
 import Key from "./_key";
+import { main } from "../index";
+
+export default class Keyboard {
+  constructor() {
+    this.keyPressed = {};
+    this.isCaps = false;
+  }
+
+  init(lang) {
+    this.lang = i18n[lang];
+    this.output = createHtmlNode("textarea", "textarea");
+    this.container = createHtmlNode("div", "keyboard");
+    this.buttons = rowsOrder.map((row) => {
+      return row.map((code) => new Key(code, this.lang[code]));
+    });
+    return this;
+  }
+  render() {
+    main.append(this.output, this.container);
+    this.buttons.forEach((row) => {
+      const keyRow = createHtmlNode("div", "keyboard__row");
+      row.forEach((button) => {
+        keyRow.append(button.key);
+      });
+      this.container.append(keyRow);
+    });
+
+    console.log(this.buttons);
+  }
+}

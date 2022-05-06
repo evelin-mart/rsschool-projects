@@ -1,7 +1,7 @@
 import createHtmlNode from "./_create";
 
 export default class Key {
-  constructor({ small, shift, code }) {
+  constructor(code, { small, shift }) {
     this.small = small;
     this.shift = shift;
     this.code = code;
@@ -21,9 +21,13 @@ export default class Key {
         this.shiftTitle = "";
       }
     }
-    this.key = createHtmlNode("div", "key", this.shiftTitle.concat(this.title));
+    this.key = createHtmlNode("div", "key");
     if (this.isFn) {
       this.key.classList.add("key_fn");
     }
+    if (this.shiftTitle) {
+      this.key.append(this.shiftTitle);
+    }
+    this.key.append(this.title);
   }
 }

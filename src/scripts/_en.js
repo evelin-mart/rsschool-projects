@@ -1,327 +1,262 @@
-export default [
-  {
+export default {
+  Backquote: {
     small: "`",
     shift: "~",
-    code: "Backquote",
   },
-  {
+  Digit1: {
     small: "1",
     shift: "!",
-    code: "Digit1",
   },
-  {
+  Digit2: {
     small: "2",
     shift: "@",
-    code: "Digit2",
   },
-  {
+  Digit3: {
     small: "3",
     shift: "#",
-    code: "Digit3",
   },
-  {
+  Digit4: {
     small: "4",
     shift: "$",
-    code: "Digit4",
   },
-  {
+  Digit5: {
     small: "5",
     shift: "%",
-    code: "Digit5",
   },
-  {
+  Digit6: {
     small: "6",
     shift: "^",
-    code: "Digit6",
   },
-  {
+  Digit7: {
     small: "7",
     shift: "&",
-    code: "Digit7",
   },
-  {
+  Digit8: {
     small: "8",
     shift: "*",
-    code: "Digit8",
   },
-  {
+  Digit9: {
     small: "9",
     shift: "(",
-    code: "Digit9",
   },
-  {
+  Digit0: {
     small: "0",
     shift: ")",
-    code: "Digit0",
   },
-  {
+  Minus: {
     small: "-",
     shift: "_",
-    code: "Minus",
   },
-  {
+  Equal: {
     small: "=",
     shift: "+",
-    code: "Equal",
   },
-  {
+  Backspace: {
     small: "Backspace",
     shift: null,
-    code: "Backspace",
   },
-  {
+  Delete: {
     small: "Delete",
     shift: null,
-    code: "Delete",
   },
-  {
+  Tab: {
     small: "Tab",
     shift: null,
-    code: "Tab",
   },
-  {
+  KeyQ: {
     small: "q",
     shift: "Q",
-    code: "KeyQ",
   },
-  {
+  KeyW: {
     small: "w",
     shift: "W",
-    code: "KeyW",
   },
-  {
+  KeyE: {
     small: "e",
     shift: "E",
-    code: "KeyE",
   },
-  {
+  KeyR: {
     small: "r",
     shift: "R",
-    code: "KeyR",
   },
-  {
+  KeyT: {
     small: "t",
     shift: "T",
-    code: "KeyT",
   },
-  {
+  KeyY: {
     small: "y",
     shift: "Y",
-    code: "KeyY",
   },
-  {
+  KeyU: {
     small: "u",
     shift: "U",
-    code: "KeyU",
   },
-  {
+  KeyI: {
     small: "i",
     shift: "I",
-    code: "KeyI",
   },
-  {
+  KeyO: {
     small: "o",
     shift: "O",
-    code: "KeyO",
   },
-  {
+  KeyP: {
     small: "p",
     shift: "P",
-    code: "KeyP",
   },
-  {
+  BracketLeft: {
     small: "[",
     shift: "{",
-    code: "BracketLeft",
   },
-  {
+  BracketRight: {
     small: "]",
     shift: "}",
-    code: "BracketRight",
   },
-  {
+  Enter: {
     small: "Enter",
     shift: null,
-    code: "Enter",
   },
-  {
+  CapsLock: {
     small: "CapsLock",
     shift: null,
-    code: "CapsLock",
   },
-  {
+  KeyA: {
     small: "a",
     shift: "A",
-    code: "KeyA",
   },
-  {
+  KeyS: {
     small: "s",
     shift: "S",
-    code: "KeyS",
   },
-  {
+  KeyD: {
     small: "d",
     shift: "D",
-    code: "KeyD",
   },
-  {
+  KeyF: {
     small: "f",
     shift: "F",
-    code: "KeyF",
   },
-  {
+  KeyG: {
     small: "g",
     shift: "G",
-    code: "KeyG",
   },
-  {
+  KeyH: {
     small: "h",
     shift: "H",
-    code: "KeyH",
   },
-  {
+  KeyJ: {
     small: "j",
     shift: "J",
-    code: "KeyJ",
   },
-  {
+  KeyK: {
     small: "k",
     shift: "K",
-    code: "KeyK",
   },
-  {
+  KeyL: {
     small: "l",
     shift: "L",
-    code: "KeyL",
   },
-  {
+  Semicolon: {
     small: ";",
     shift: ":",
-    code: "Semicolon",
   },
-  {
+  Quote: {
     small: "'",
     shift: '"',
-    code: "Quote",
   },
-  {
+  Backslash: {
     small: "\\",
     shift: "|",
-    code: "Backslash",
   },
-  {
+  ShiftLeft: {
     small: "Shift",
     shift: null,
-    code: "ShiftLeft",
   },
-  {
+  IntlBackslash: {
     small: "<",
     shift: ">",
-    code: "IntlBackslash",
   },
-  {
+  KeyZ: {
     small: "z",
     shift: "Z",
-    code: "KeyZ",
   },
-  {
+  KeyX: {
     small: "x",
     shift: "X",
-    code: "KeyX",
   },
-  {
+  KeyC: {
     small: "c",
     shift: "C",
-    code: "KeyC",
   },
-  {
+  KeyV: {
     small: "v",
     shift: "V",
-    code: "KeyV",
   },
-  {
+  KeyB: {
     small: "b",
     shift: "B",
-    code: "KeyB",
   },
-  {
+  KeyN: {
     small: "n",
     shift: "N",
-    code: "KeyN",
   },
-  {
+  KeyM: {
     small: "m",
     shift: "M",
-    code: "KeyM",
   },
-  {
+  Comma: {
     small: ",",
     shift: "<",
-    code: "Comma",
   },
-  {
+  Period: {
     small: ".",
     shift: ">",
-    code: "Period",
   },
-  {
+  Slash: {
     small: "/",
     shift: "?",
-    code: "Slash",
   },
-  {
+  ShiftRight: {
     small: "Shift",
     shift: null,
-    code: "ShiftRight",
   },
-  {
+  ControlLeft: {
     small: "Ctrl",
     shift: null,
-    code: "ControlLeft",
   },
-  {
+  AltLeft: {
     small: "Alt",
     shift: null,
-    code: "AltLeft",
   },
-  {
+  Space: {
     small: " ",
     shift: null,
-    code: "Space",
   },
-  {
+  AltRight: {
     small: "Alt",
     shift: null,
-    code: "AltRight",
   },
-  {
+  ControlRight: {
     small: "Ctrl",
     shift: null,
-    code: "ControlRight",
   },
-  {
+  ArrowLeft: {
     small: "&larr;",
     shift: null,
-    code: "ArrowLeft",
   },
-  {
+  ArrowUp: {
     small: "&uarr;",
     shift: null,
-    code: "ArrowUp",
   },
-  {
+  ArrowDown: {
     small: "&darr;",
     shift: null,
-    code: "ArrowDown",
   },
-  {
+  ArrowRight: {
     small: "&rarr;",
     shift: null,
-    code: "ArrowRight",
   },
-  {
+  Win: {
     small: "Win",
     shift: null,
-    code: "Win",
   },
-];
+};

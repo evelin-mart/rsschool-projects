@@ -1,15 +1,12 @@
 .keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
   padding: 8px;
   border: 3px solid darkslategray;
   background-color: gainsboro;
-  border-radius: 10px;
-}
-
-.keyboard__shield {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  border-radius: 6px;
 }
 
 .keyboard__row {
