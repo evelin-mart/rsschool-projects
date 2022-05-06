@@ -24,3 +24,22 @@ body {
   padding: 10px 40px;
   margin: 0 auto;
 }
+
+.title {
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1.5em;
+  color: cornflowerblue;
+}
+
+.subtitle {
+  font-size: 1.15em;
+  color: darkgray;
+  line-height: 1.5em;
+}
+
+.text {
+  margin-top: 20px;
+  line-height: 1.2em;
+  font-size: 0.8em;
+}

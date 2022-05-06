@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
   padding: 8px;
   border: 3px solid darkslategray;
   background-color: gainsboro;
@@ -10,26 +9,68 @@
 }
 
 .keyboard__row {
-  display: flex;
+  display: grid;
   gap: 6px;
+  &:nth-child(1) {
+    grid-template-columns: repeat(13, 1fr) 2.5fr;
+  }
+  &:nth-child(2) {
+    grid-template-columns: 1.1fr repeat(13, 1fr) 1.25fr;
+  }
+  &:nth-child(3) {
+    grid-template-columns: 2.5fr repeat(11, 1fr) 2.15fr;
+  }
+  &:nth-child(4) {
+    grid-template-columns: 2.5fr repeat(11, 1fr) 2.15fr;
+  }
+  &:nth-child(5) {
+    grid-template-columns: 1.25fr repeat(2, 1fr) 8fr repeat(5, 1fr);
+  }
 }
 
 .key {
-  flex: 0 1 40px;
-  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+  padding: 3px;
   font-weight: bold;
   border-radius: 3px;
-  transition: all 0.3s linear;
+  transition: all 0.15s linear;
   background-color: darkgray;
   color: black;
+  overflow: hidden;
   cursor: pointer;
   &_fn {
-    flex-basis: 80px;
-    aspect-ratio: 2/1;
+    font-size: 0.8em;
     background-color: darkslategray;
     color: gainsboro;
   }
   &_active {
-    box-shadow: 0 0 2px white;
+    transform: scale(0.95);
+  }
+  &:active {
+    transform: scale(0.95);
+    background-color: cadetblue;
+  }
+}
+
+.key__symbol {
+  &.inactive {
+    color: gray;
+    font-size: 0.8em;
+  }
+  &.active {
+    text-align: right;
+  }
+}
+
+.key__title {
+  text-align: center;
+  &.inactive {
+    display: none;
+  }
+  &.active {
+    display: block;
   }
 }

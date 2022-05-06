@@ -1,4 +1,8 @@
 export default {
+  ShiftLeft: {
+    small: "Shift",
+    shift: null,
+  },
   CapsLock: {
     small: "CapsLock",
     shift: null,

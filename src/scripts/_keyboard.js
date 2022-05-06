@@ -13,7 +13,7 @@ const rowsOrder = [
     "Digit0",
     "Minus",
     "Equal",
-    "Delete",
+    "Backspace",
   ],
   [
     "Tab",
@@ -29,7 +29,8 @@ const rowsOrder = [
     "KeyP",
     "BracketLeft",
     "BracketRight",
-    "Backspace",
+    "Backslash",
+    "Delete",
   ],
   [
     "CapsLock",
@@ -44,12 +45,10 @@ const rowsOrder = [
     "KeyL",
     "Semicolon",
     "Quote",
-    "Backslash",
     "Enter",
   ],
   [
     "ShiftLeft",
-    "IntlBackslash",
     "KeyZ",
     "KeyX",
     "KeyC",
@@ -105,7 +104,5 @@ export default class Keyboard {
       });
       this.container.append(keyRow);
     });
-
-    console.log(this.buttons);
   }
 }
