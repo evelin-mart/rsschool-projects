@@ -78,25 +78,27 @@ const rowsOrder = [
 import createHtmlNode from "./_create";
 import i18n from "./_langs";
 import Key from "./_key";
-import { main } from "../index";
+import { node } from "webpack";
 
 export default class Keyboard {
-  constructor() {
-    this.keyPressed = {};
-    this.isCaps = false;
+  constructor(language, output, container) {
+    this.lang = language;
+    this.output = output;
+    this.container = container;
   }
 
-  init(lang) {
-    this.lang = i18n[lang];
-    this.output = createHtmlNode("textarea", "textarea");
-    this.container = createHtmlNode("div", "keyboard");
+  init() {
+    this.isCaps = false;
+    this.isShift = false;
+    this.langLayout = i18n[this.lang];
     this.buttons = rowsOrder.map((row) => {
-      return row.map((code) => new Key(code, this.lang[code]));
+      return row.map((code) => new Key(code, this.langLayout[code]));
     });
     return this;
   }
+
   render() {
-    main.append(this.output, this.container);
+    this.container.innerHTML = "";
     this.buttons.forEach((row) => {
       const keyRow = createHtmlNode("div", "keyboard__row");
       row.forEach((button) => {
@@ -104,5 +106,109 @@ export default class Keyboard {
       });
       this.container.append(keyRow);
     });
+    this.buttons = this.buttons.flat();
+  }
+
+  handleEvent = (e) => {
+    // e.target.closest(".key");
+
+    // var down = false;
+    // document.addEventListener(
+    //   "keydown",
+    //   function () {
+    //     if (down) return;
+    //     down = true;
+    //     // your magic code here
+    //   },
+    //   false
+    // );
+
+    // document.addEventListener(
+    //   "keyup",
+    //   function () {
+    //     down = false;
+    //   },
+    //   false
+    // );
+
+    const code = e.code || e.target.closest(".key").dataset.code;
+    const type = e.type;
+    const targetKey = this.buttons.find((key) => key.code === code);
+    if (!targetKey) return;
+
+    e.stopPropagation();
+    e.preventDefault();
+    this.output.focus();
+
+    if (code.match(/Shift.*/)) {
+      this.handleShift(type, targetKey);
+      return;
+    }
+    if (code.match(/CapsLock/)) {
+      this.handleCaps(type, targetKey);
+      return;
+    }
+
+    if (type.match(/(key|mouse)down/)) {
+      targetKey.key.classList.add("key_active");
+      if (code.match(/AltLeft/)) {
+        this.isAlt = true;
+        this.isShift && this.toggleLanguage();
+      }
+
+      if (!targetKey.isFn) {
+        if (this.isShift || (this.isCaps && targetKey.isLetter)) {
+          console.log(targetKey.shift);
+        } else {
+          console.log(targetKey.small);
+        }
+      }
+    }
+
+    if (type.match(/(key|mouse)up/)) {
+      targetKey.key.classList.remove("key_active");
+      if (code.match(/AltLeft/)) {
+        this.isAlt = false;
+      }
+    }
+  };
+
+  toggleLanguage() {
+    const langs = Object.keys(i18n);
+    let index = langs.indexOf(this.lang) + 1;
+    index === langs.length && (index = 0);
+    this.lang = langs[index];
+    this.init().render();
+  }
+
+  handleShift(type, targetKey) {
+    switch (type) {
+      case "keydown":
+        this.isShift = true;
+        targetKey.key.classList.add("key_active");
+        break;
+      case "mousedown":
+        this.isShift = !this.isShift;
+        targetKey.key.classList.toggle("key_active");
+        break;
+      case "keyup":
+        this.isShift = false;
+        targetKey.key.classList.remove("key_active");
+        break;
+    }
+  }
+  handleCaps(type, targetKey) {
+    if (type.match(/(key|mouse)down/)) {
+      this.isCaps = !this.isCaps;
+      targetKey.key.classList.toggle("key_active");
+      this.buttons.map((button) => {
+        if (button.isLetter) {
+          button.key.childNodes.forEach((node) => {
+            node.classList.toggle("inactive");
+            node.classList.toggle("active");
+          });
+        }
+      });
+    }
   }
 }
