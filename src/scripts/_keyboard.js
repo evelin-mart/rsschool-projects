@@ -175,6 +175,7 @@ export default class Keyboard {
   handleShift(type, targetKey) {
     switch (type) {
       case 'keydown':
+        if (this.isShift === true) return;
         this.isShift = true;
         targetKey.key.classList.add('key_active');
         break;
