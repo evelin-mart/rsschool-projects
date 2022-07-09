@@ -1,21 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
+import MyButton from './UI/MyButton';
+import MyTextInput from './UI/MyInput';
+import MySelect from './UI/MySelect';
+import GroupFilterItem from './GroupFilterItem';
 
 const Filters = () => {
+  //Expander
   const [expand, setExpand] = useState(false);
-
   const expandFilters = () => {
     setExpand(!expand);
   };
+
+  //Reset
+  const resetFilters = () => {
+    setSelectedSort('');
+    setSearchQuery('');
+  };
+
+  //Sorter
+  const [selectedSort, setSelectedSort] = useState('');
+  const sortToys = (sort: string) => {
+    setSelectedSort(sort);
+    console.log(sort);
+  };
+
+  //Search
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <div className={['filter-wrapper', expand ? ' open' : ''].join('')}>
       <div className='filter__header'>
         <div className='filter__expand-wrapper'>
           <h3>Фильтры</h3>
-          <button className='filter__expand' onClick={expandFilters}></button>
+          <MyButton className='filter__expand' onClick={expandFilters}></MyButton>
         </div>
         <div className='filter__search-wrapper'>
-          <input type='text' className='filter__search' placeholder='Поиск' />
+          <MyTextInput
+            value={searchQuery}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+            className='filter__search'
+            placeholder='Поиск...'
+          />
           <img src={'./assets/search.svg'} className='search-icon' alt='search' />
         </div>
       </div>
@@ -23,31 +48,24 @@ const Filters = () => {
         <div className='filter__group-item'>
           <div className='filter'>
             <div className='filter__name'>Форма:</div>
-            <div className='filter__items shape'>
-              <div className='filter__item active' data-filter='shape-шар'></div>
-              <div className='filter__item' data-filter='shape-колокольчик'></div>
-              <div className='filter__item' data-filter='shape-шишка'></div>
-              <div className='filter__item' data-filter='shape-снежинка'></div>
-              <div className='filter__item' data-filter='shape-фигурка'></div>
-            </div>
+            <GroupFilterItem
+              filter='shape'
+              options={['шар', 'колокольчик', 'шишка', 'снежинка', 'фигурка']}
+            />
           </div>
           <div className='filter'>
             <div className='filter__name'>Цвет:</div>
-            <div className='filter__items color'>
-              <div className='filter__item active' data-filter='color-белый'></div>
-              <div className='filter__item' data-filter='color-желтый'></div>
-              <div className='filter__item' data-filter='color-красный'></div>
-              <div className='filter__item' data-filter='color-синий'></div>
-              <div className='filter__item' data-filter='color-зеленый'></div>
-            </div>
+            <GroupFilterItem
+              filter='color'
+              options={['белый', 'желтый', 'красный', 'синий', 'зеленый']}
+            />
           </div>
           <div className='filter'>
             <div className='filter__name'>Размер:</div>
-            <div className='filter__items size'>
-              <div className='filter__item active' data-filter='size-большой'></div>
-              <div className='filter__item' data-filter='size-средний'></div>
-              <div className='filter__item' data-filter='size-малый'></div>
-            </div>
+            <GroupFilterItem
+              filter='size'
+              options={['большой', 'средний', 'малый']}
+            />
           </div>
         </div>
         <div className='filter__group-item slider'>
@@ -71,16 +89,19 @@ const Filters = () => {
         <div className='filter__group-item sort'>
           <div className='filter slider'>
             <div className='filter__name'>Сортировать:</div>
-            <select className='select'>
-              <option value='' hidden></option>
-              <option value='sort-price-max'>По цене ᐃ</option>
-              <option value='sort-price-min'>По цене ᐁ</option>
-              <option value='sort-name-max'>По названию ᐃ</option>
-              <option value='sort-name-min'>По названию ᐁ</option>
-            </select>
+            <MySelect
+              options={[
+                { value: 'sort-price-max', name: 'По цене ᐃ' },
+                { value: 'sort-price-min', name: 'По цене ᐁ' },
+                { value: 'sort-name-max', name: 'По названию ᐃ' },
+                { value: 'sort-name-min', name: 'По названию ᐁ' },
+              ]}
+              value={selectedSort}
+              onChange={sortToys}
+            />
           </div>
           <div className='filter'>
-            <button className='reset'>Сброс</button>
+            <MyButton className='reset' onClick={resetFilters}>Сброс</MyButton>
           </div>
         </div>
       </div>
