@@ -1,0 +1,260 @@
+.filter-wrapper {
+  @extend %background;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 0 20px;
+  height: 60px;
+  overflow: hidden;
+  transition: .3s;
+  &.open {
+    height: 100%;
+  }
+}
+
+.filter__header {
+  @include flex($justify: space-between);
+  padding-bottom: 1rem;
+  h3 {
+    font-size: 2.5rem;
+    font-family: 'Neucha';
+    text-transform: uppercase;
+  }
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+.filter__expand-wrapper {
+  @include flex();
+  gap: 2rem;
+}
+
+.filter__expand {
+  width: 60px;
+  background-color: transparent;
+  background-image: url('../assets/svg/arrow-down.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  @extend %border;
+  &:hover {
+    background-color: $color-bg;
+    border: none;
+  }
+}
+
+.filter__search-wrapper {
+  position: relative;
+}
+
+.filter__search {
+  height: 40px;
+  padding: 3px 3px 3px 40px;
+  @extend %border;
+  border-radius: 20px;
+}
+
+.search-icon {
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  width: 40px;
+  cursor: pointer;
+}
+
+.filter__group {
+  padding: 1rem 0;
+  @include flex($justify: space-around, $align: flex-start);
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
+
+.filter__group-item {
+  flex: 0 1 30%;
+  @include flex($direction: column, $align: flex-start);
+  gap: 1.5rem;
+  @media (max-width: 1024px) {
+    flex-basis: 45%;
+  }
+  @media (max-width: 736px) {
+    flex-basis: 70%;
+  }
+  @media (max-width: 500px) {
+    flex-basis: 100%;
+  }
+}
+
+.filter {
+  @include flex();
+  gap: 1rem;
+}
+
+.filter__items {
+  @include flex();
+  gap: 3px;
+}
+
+.shape > .filter__item,
+.size > .filter__item {
+  width: 42px;
+  height: 42px;
+  padding: 2px;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $color-main;
+    border-radius: 7px;
+  }
+  &:active {
+    background-color: $color-bg;
+    background-size: 85%;
+  }
+  &.active {
+    border: 1px solid $color-main;
+    background-color: $color-bg;
+    border-radius: 7px;
+  }
+}
+
+.shape div:nth-child(1) {
+  background-image: url('../assets/svg/ball.svg');
+}
+.shape div:nth-child(2) {
+  background-image: url('../assets/svg/bell.svg');
+}
+.shape div:nth-child(3) {
+  background-image: url('../assets/svg/cone.svg');
+}
+.shape div:nth-child(4) {
+  background-image: url('../assets/svg/snowflake.svg');
+}
+.shape div:nth-child(5) {
+  background-image: url('../assets/svg/toy.svg');
+}
+
+.size > .filter__item {
+  background-image: url('../assets/svg/ball.svg');
+}
+
+.size div:nth-child(2) {
+  background-size: 75%;
+}
+.size div:nth-child(3) {
+  background-size: 60%;
+}
+
+.color > .filter__item {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  &:hover {
+    border: 2px solid $color-main;
+  }
+  &:active {
+    transform: translate(1px, 1px);
+  }
+  &.active {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4%;
+      left: 26%;
+      width: 14px;
+      height: 20px;
+      border: solid $color-bg;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.color div:nth-child(1) {
+  background-color: white;
+}
+.color div:nth-child(2) {
+  background-color: yellow;
+}
+.color div:nth-child(3) {
+  background-color: red;
+}
+.color div:nth-child(4) {
+  background-color: blue;
+}
+.color div:nth-child(5) {
+  background-color: green;
+}
+
+.slider,
+.sort {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.slider__output {
+  width: 60px;
+  height: 40px;
+  padding: 8px 0;
+  text-align: center;
+  @extend %border;
+  border-radius: 20px;
+}
+
+.select {
+  appearance: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  height: 40px;
+  padding: 0 5px 0 25px;
+  background: 95% center / 20px no-repeat url('../assets/svg/arrow-down.svg');
+  background-color: $color-bg;
+  border-radius: 20px;
+  @extend %border;
+  cursor: pointer;
+
+  option {
+    color: $white-color;
+    background-color: $color-card-stroke;
+  }
+
+  @media (max-width: 1024px) {
+    width: 300px;
+  }
+}
+
+.count-slider {
+  flex-grow: 1;
+}
+
+.reset {
+  background-color: $color-bg;
+  width: 200px;
+  margin-top: 10%;
+  margin-left: auto;
+  &:hover {
+    background-color: transparent;
+    @extend %border;
+  }
+}
+
+.sort {
+  @media (max-width: 1024px) {
+    flex-basis: 98%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+  }
+}

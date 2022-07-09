@@ -1,0 +1,9 @@
+main {
+  min-height: calc(100vh - 120px);
+  background: center / cover no-repeat url(../assets/bg.jpg);
+  background-attachment: fixed;
+}
+
+.main {
+  padding: 15px 0 10vh;
+}

@@ -1,0 +1,99 @@
+.cards-wrapper {
+  @include flex($align: stretch, $wrap: wrap);
+  gap: 2rem;
+  padding: 2rem 0;
+  @media (max-width: 1139px) {
+    justify-content: space-evenly;
+  }
+}
+
+.toy-card {
+  min-width: 260px;
+  flex-basis: 23%;
+  padding: 1rem;
+  @extend %background;
+  @extend %border;
+  border-radius: 2rem;
+  cursor: pointer;
+  @media (max-width: 1139px) {
+    flex-basis: 30%;
+  }
+  @media (max-width: 860px) {
+    flex-basis: 45%;
+  }
+  @media (max-width: 600px) {
+    flex-basis: 70%;
+  }
+}
+
+.toy-card__header {
+  flex-basis: 100%;
+  text-align: center;
+  font-family: 'Neucha';
+  font-size: 2.3rem;
+  font-weight: bold;
+  letter-spacing: 0.14rem;
+  line-height: 2.8rem;
+}
+
+.toy-card__description {
+  padding: 1rem 0;
+  @include flex($justify: space-between, $align: flex-start);
+}
+
+.toy__img {
+  width: 40%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.toy-description {
+  padding-top: 1rem;
+  @include flex($direction: column, $align: flex-end);
+  gap: 1rem;
+  p {
+    text-align: right;
+  }
+}
+
+.price {
+  position: absolute;
+  bottom: 20px;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 40px;
+  background: $color-main;
+  left: -8px;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+  }
+  &::before {
+    border-bottom: 8px solid #14455b;
+    border-left: 8px solid transparent;
+    top: -8px;
+    left: 0;
+  }
+  &::after {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 15px solid $color-main;
+    right: -15px;
+  }
+}
+
+.not-found {
+  padding: 3rem;
+  font-family: "Neucha";
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  @extend %border;
+  border-radius: 3rem;
+  @extend %background;
+}

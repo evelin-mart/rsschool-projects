@@ -1,0 +1,44 @@
+$white-color: #fff;
+$color-main-dark: #121C1E;
+$color-main: #278D9F;
+$color-bg: rgba(31, 112, 127, .3);
+$color-card-fill: #b3f6ff;
+$color-card-stroke: #1a5966;
+$color-btn-fill: #9df3ff;
+$color-btn-stroke: #24c5db;
+
+@mixin flex($direction: row, $justify: center, $align: center, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+%background {
+  background-color: $color-bg;
+  backdrop-filter: blur(6px);
+}
+
+%border {
+  border: 1px solid $color-main;
+}
+
+@font-face {
+  font-family: "Neucha";
+  src: url(../assets/fonts/Neucha-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Orelega One";
+  src: url(../assets/fonts/OrelegaOne-Regular.ttf);
+}
+
+@import './normalize.scss';
+@import './common.scss';
+@import './components.scss';
+@import './header.scss';
+@import './main.scss';
+@import './filter.scss';
+@import './toy.scss';
+@import './footer.scss';

@@ -1,0 +1,17 @@
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Orelega One";
+  font-size: 2rem;
+  height: 100vh;
+  color: $white-color;
+}
+
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
