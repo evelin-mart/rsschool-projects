@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { ToyT } from './data';
 import ToyItem from './ToyItem';
-import { data } from './data';
+type ToysProps = {
+  current: ToyT[]
+}
 
-const Toys = () => {
-  const [current, setCurrent] = useState(data);
-
+const Toys = ({ current }: ToysProps) => {
   return (
     <div className='cards-wrapper'>
       {current.length ? (

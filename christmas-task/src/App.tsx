@@ -2,7 +2,7 @@ import './styles/index.scss';
 import React from 'react';
 import { Fragment } from 'react';
 import Filters from './components/Filters';
-import Toys from './components/Toys';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -14,9 +14,7 @@ function App() {
               <img src={'./assets/holiday_icon.png'} alt='logo' className='logo' />
               <h1>x-mas store</h1>
             </a>
-            <div className='header__cart'>
-              <span>0</span>
-            </div>
+            <Cart />
           </div>
         </div>
       </header>
@@ -24,7 +22,6 @@ function App() {
         <div className='container'>
           <div className='main'>
             <Filters />
-            <Toys />
           </div>
         </div>
       </main>
