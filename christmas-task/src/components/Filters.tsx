@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, Fragment, useMemo } from 'react';
 import MyButton from './UI/MyButton';
 import MyTextInput from './UI/MyInput';
 import MySelect from './UI/MySelect';
-import GroupFilterItem from './GroupFilterItem';
+import GroupFilterItem, { CheckboxFilters } from './GroupFilterItem';
 import Toys from './Toys';
 import { data, ToyT } from './data';
 
@@ -10,7 +10,7 @@ const Filters = () => {
   //Data
   const initialState = data;
 
-  //Expander
+  //Expand
   const [expand, setExpand] = useState(false);
   const expandFilters = () => {
     setExpand(!expand);
@@ -20,9 +20,11 @@ const Filters = () => {
   const resetFilters = () => {
     setSelectedSort('');
     setSearchQuery('');
+    setCheckboxFilters({});
+    //?reset filters state?
   };
 
-  //Sorter
+  //Sort
   const [selectedSort, setSelectedSort] = useState('');
   const sortToys = (array: ToyT[]) => {
     const Sort = (a: ToyT, b: ToyT) => {
@@ -48,6 +50,23 @@ const Filters = () => {
     return array.filter((toy) => toy.name.toLowerCase().includes(searchQuery.toLowerCase()));
   };
 
+  //Filter
+  const [checkboxFilters, setCheckboxFilters] = useState<checkboxFiltersState>({});
+  type checkboxFiltersState = { [x in CheckboxFilters]?: string[] | null };
+  const presetCheckboxFilters = (prop: checkboxFiltersState) => {
+    setCheckboxFilters({ ...checkboxFilters, ...prop });
+  };
+  const checkboxFiltering = (array: ToyT[]) => {
+    return array.filter((toy) => {
+      for (let prop in checkboxFilters) {
+        if (checkboxFilters[prop as CheckboxFilters] !== null) {
+          if (!checkboxFilters[prop as CheckboxFilters]!.includes(toy[prop as CheckboxFilters])) return false;
+        }
+      }
+      return true;
+    });
+  };
+
   //Current
   const current = useMemo(() => {
     let filtering = [...initialState];
@@ -57,8 +76,9 @@ const Filters = () => {
     if (searchQuery) {
       filtering = searchToys(filtering);
     }
-    return filtering
-  }, [searchQuery, selectedSort]);
+    filtering = checkboxFiltering(filtering);
+    return filtering;
+  }, [searchQuery, selectedSort, checkboxFilters]);
 
   return (
     <Fragment>
@@ -85,18 +105,24 @@ const Filters = () => {
               <GroupFilterItem
                 filter='shape'
                 options={['шар', 'колокольчик', 'шишка', 'снежинка', 'фигурка']}
+                onClick={presetCheckboxFilters}
               />
             </div>
             <div className='filter'>
               <div className='filter__name'>Цвет:</div>
               <GroupFilterItem
                 filter='color'
-                options={['белый', 'желтый', 'красный', 'синий', 'зеленый']}
+                options={['белый', 'желтый', 'красный', 'синий', 'зелёный']}
+                onClick={presetCheckboxFilters}
               />
             </div>
             <div className='filter'>
               <div className='filter__name'>Размер:</div>
-              <GroupFilterItem filter='size' options={['большой', 'средний', 'малый']} />
+              <GroupFilterItem
+                filter='size'
+                options={['большой', 'средний', 'малый']}
+                onClick={presetCheckboxFilters}
+              />
             </div>
           </div>
           <div className='filter__group-item slider'>
