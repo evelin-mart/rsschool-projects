@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-type ItemOptions = { option: string, onClick: Function };
+type ItemOptions = { option: string; onClick: Function };
 
-const FilterItem = ({ option, onClick }: ItemOptions) => {
+export const CheckboxFilter = ({ option, onClick }: ItemOptions) => {
   const [state, setState] = useState(false);
   const setFilterItem = (value: string) => {
     const temp = !state;
     setState(temp);
     return {
       value: value,
-      state: temp
+      state: temp,
     };
-  }
+  };
   return (
     <div
       className={['filter__item', state ? 'active' : ''].join(' ')}
@@ -18,5 +18,3 @@ const FilterItem = ({ option, onClick }: ItemOptions) => {
       onClick={(e) => onClick(setFilterItem(e.currentTarget.dataset.filter!))}></div>
   );
 };
-
-export default FilterItem;

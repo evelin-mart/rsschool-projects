@@ -2,10 +2,7 @@ $white-color: #fff;
 $color-main-dark: #121C1E;
 $color-main: #278D9F;
 $color-bg: rgba(31, 112, 127, .3);
-$color-card-fill: #b3f6ff;
-$color-card-stroke: #1a5966;
-$color-btn-fill: #9df3ff;
-$color-btn-stroke: #24c5db;
+$color-light-dark: #1a5966;
 
 @mixin flex($direction: row, $justify: center, $align: center, $wrap: nowrap) {
   display: flex;
@@ -40,5 +37,7 @@ $color-btn-stroke: #24c5db;
 @import './header.scss';
 @import './main.scss';
 @import './filter.scss';
-@import './toy.scss';
+@import '../components/CheckboxGroup/checkbox-group.scss';
+@import '../components/Container/container.scss';
+@import '../components/Toy/toy.scss';
 @import './footer.scss';

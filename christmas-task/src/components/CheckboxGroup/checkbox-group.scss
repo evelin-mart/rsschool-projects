@@ -1,0 +1,102 @@
+.shape > .filter__item,
+.size > .filter__item {
+  width: 42px;
+  height: 42px;
+  padding: 2px;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $color-main;
+    border-radius: 7px;
+  }
+  &:active {
+    background-color: $color-bg;
+    background-size: 85%;
+  }
+  &.active {
+    border: 1px solid $color-main;
+    background-color: $color-bg;
+    border-radius: 7px;
+  }
+}
+
+.shape div:nth-child(1) {
+  background-image: url('../../assets/svg/ball.svg');
+}
+.shape div:nth-child(2) {
+  background-image: url('../../assets/svg/bell.svg');
+}
+.shape div:nth-child(3) {
+  background-image: url('../../assets/svg/cone.svg');
+}
+.shape div:nth-child(4) {
+  background-image: url('../../assets/svg/snowflake.svg');
+}
+.shape div:nth-child(5) {
+  background-image: url('../../assets/svg/toy.svg');
+}
+
+.size > .filter__item {
+  background-image: url('../../assets/svg/ball.svg');
+}
+
+.size div:nth-child(2) {
+  background-size: 75%;
+}
+.size div:nth-child(3) {
+  background-size: 60%;
+}
+
+.color > .filter__item {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  &:hover {
+    border: 2px solid $color-main;
+  }
+  &:active {
+    transform: translate(1px, 1px);
+  }
+  &.active {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4%;
+      left: 26%;
+      width: 14px;
+      height: 20px;
+      border: solid greenyellow;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.color div:nth-child(1) {
+  background-color: white;
+  &.active::after {
+    border-color: darkorchid;
+  }
+}
+.color div:nth-child(2) {
+  background-color: yellow;
+  &.active::after {
+    border-color: darkorchid;
+  }
+}
+.color div:nth-child(3) {
+  background-color: red;
+}
+.color div:nth-child(4) {
+  background-color: blue;
+}
+.color div:nth-child(5) {
+  background-color: green;
+}

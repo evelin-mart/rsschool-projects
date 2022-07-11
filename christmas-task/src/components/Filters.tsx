@@ -2,13 +2,14 @@ import React, { useState, ChangeEvent, Fragment, useMemo } from 'react';
 import MyButton from './UI/MyButton';
 import MyTextInput from './UI/MyInput';
 import MySelect from './UI/MySelect';
-import GroupFilterItem, { CheckboxFilters } from './GroupFilterItem';
-import Toys from './Toys';
-import { data, ToyT } from './data';
+import { CheckboxGroup, CheckboxFilters } from './CheckboxGroup/CheckboxGroup';
+import {Container} from './Container/Container';
+import data from '../resources/data.json';
+import { ToyT } from '../resources/data.types';
 
 const Filters = () => {
   //Data
-  const initialState = data;
+  const initialState = data.data as ToyT.Toy[];
 
   //Expand
   const [expand, setExpand] = useState(false);
@@ -26,8 +27,8 @@ const Filters = () => {
 
   //Sort
   const [selectedSort, setSelectedSort] = useState('');
-  const sortToys = (array: ToyT[]) => {
-    const Sort = (a: ToyT, b: ToyT) => {
+  const sortToys = (array: ToyT.Toy[]) => {
+    const Sort = (a: ToyT.Toy, b: ToyT.Toy) => {
       switch (selectedSort) {
         case 'sort-price-max':
           return +a.price - +b.price;
@@ -46,7 +47,7 @@ const Filters = () => {
 
   //Search
   const [searchQuery, setSearchQuery] = useState('');
-  const searchToys = (array: ToyT[]) => {
+  const searchToys = (array: ToyT.Toy[]) => {
     return array.filter((toy) => toy.name.toLowerCase().includes(searchQuery.toLowerCase()));
   };
 
@@ -56,11 +57,12 @@ const Filters = () => {
   const presetCheckboxFilters = (prop: checkboxFiltersState) => {
     setCheckboxFilters({ ...checkboxFilters, ...prop });
   };
-  const checkboxFiltering = (array: ToyT[]) => {
+  const checkboxFiltering = (array: ToyT.Toy[]) => {
     return array.filter((toy) => {
       for (let prop in checkboxFilters) {
         if (checkboxFilters[prop as CheckboxFilters] !== null) {
-          if (!checkboxFilters[prop as CheckboxFilters]!.includes(toy[prop as CheckboxFilters])) return false;
+          if (!checkboxFilters[prop as CheckboxFilters]!.includes(toy[prop as CheckboxFilters]))
+            return false;
         }
       }
       return true;
@@ -102,7 +104,7 @@ const Filters = () => {
           <div className='filter__group-item'>
             <div className='filter'>
               <div className='filter__name'>Форма:</div>
-              <GroupFilterItem
+              <CheckboxGroup
                 filter='shape'
                 options={['шар', 'колокольчик', 'шишка', 'снежинка', 'фигурка']}
                 onClick={presetCheckboxFilters}
@@ -110,7 +112,7 @@ const Filters = () => {
             </div>
             <div className='filter'>
               <div className='filter__name'>Цвет:</div>
-              <GroupFilterItem
+              <CheckboxGroup
                 filter='color'
                 options={['белый', 'желтый', 'красный', 'синий', 'зелёный']}
                 onClick={presetCheckboxFilters}
@@ -118,7 +120,7 @@ const Filters = () => {
             </div>
             <div className='filter'>
               <div className='filter__name'>Размер:</div>
-              <GroupFilterItem
+              <CheckboxGroup
                 filter='size'
                 options={['большой', 'средний', 'малый']}
                 onClick={presetCheckboxFilters}
@@ -166,7 +168,7 @@ const Filters = () => {
         </div>
       </div>
 
-      <Toys current={current} />
+      <Container current={current} />
     </Fragment>
   );
 };

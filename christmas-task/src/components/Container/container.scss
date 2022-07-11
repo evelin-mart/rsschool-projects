@@ -1,0 +1,19 @@
+.cards-wrapper {
+  @include flex($align: stretch, $wrap: wrap);
+  gap: 2rem;
+  padding: 2rem 0;
+  @media (max-width: 1139px) {
+    justify-content: space-evenly;
+  }
+}
+
+.not-found {
+  padding: 3rem;
+  font-family: 'Neucha';
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  @extend %border;
+  border-radius: 3rem;
+  @extend %background;
+}

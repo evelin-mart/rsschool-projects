@@ -1,12 +1,3 @@
-.cards-wrapper {
-  @include flex($align: stretch, $wrap: wrap);
-  gap: 2rem;
-  padding: 2rem 0;
-  @media (max-width: 1139px) {
-    justify-content: space-evenly;
-  }
-}
-
 .toy-card {
   min-width: 260px;
   flex-basis: 23%;
@@ -41,7 +32,7 @@
   @include flex($justify: space-between, $align: flex-start);
 }
 
-.toy__img {
+.toy-img {
   width: 40%;
   object-fit: contain;
   pointer-events: none;
@@ -85,15 +76,4 @@
     border-left: 15px solid $color-main;
     right: -15px;
   }
-}
-
-.not-found {
-  padding: 3rem;
-  font-family: "Neucha";
-  font-size: 3rem;
-  text-align: center;
-  text-transform: uppercase;
-  @extend %border;
-  border-radius: 3rem;
-  @extend %background;
 }

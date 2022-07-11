@@ -1,14 +1,14 @@
 import React from 'react';
-import { ToyT } from './data';
+import { ToyT } from '../../resources/data.types';
 
-const ToyItem = (toy: ToyT) => {
+export const ToyItem = (toy: ToyT.Toy) => {
   const { id, name, count, price, year, shape, color, size } = toy;
   const src = `./assets/toys/${id}.png`;
   return (
     <div className='toy-card' data-id={id}>
       <h3 className='toy-card__header'>{name}</h3>
       <div className='toy-card__description'>
-        <img className='toy__img' src={src} alt={name}></img>
+        <img className='toy-img' src={src} alt={name}></img>
         <div className='toy-description'>
           <p>Год: {year}</p>
           <p>Форма: {shape}</p>
@@ -21,5 +21,3 @@ const ToyItem = (toy: ToyT) => {
     </div>
   );
 };
-
-export default ToyItem;

@@ -1,11 +1,8 @@
 import React from 'react';
-import { ToyT } from './data';
-import ToyItem from './ToyItem';
-type ToysProps = {
-  current: ToyT[]
-}
+import { ToyT } from '../../resources/data.types';
+import {ToyItem} from '../Toy/ToyItem';
 
-const Toys = ({ current }: ToysProps) => {
+export const Container = ({ current }: { current: ToyT.Toy[] }) => {
   return (
     <div className='cards-wrapper'>
       {current.length ? (
@@ -16,5 +13,3 @@ const Toys = ({ current }: ToysProps) => {
     </div>
   );
 };
-
-export default Toys;
